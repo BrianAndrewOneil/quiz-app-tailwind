@@ -1,14 +1,14 @@
-# A Quiz App in React that Uses LocalStorage
+# A Quiz App in React featuring Tailwind CSS
 
 A scalable and fast framework for an online quiz. Users can navigate through the quiz, answer the questions, and review and update their previous answers. The score report includes results for both the overall quiz and question-by-question. Users can clear their answers and retake the quiz as often as they'd like.
 
-**Link to project:** https://quiz-react-oneil.netlify.app/
+**Link to project:** https://quiz-react-tailwind-oneil.netlify.app/
 
-<img alt="image of web app" src="https://brianoneil.netlify.app/assets/img/portfolio/quiz.gif" width=50%>
+<img alt="image of web app" src="https://brianoneil.netlify.app/assets/img/portfolio/quiz-tailwind.png" width=50%>
 
 ## How It's Made
 
-**Tech used:** HTML, CSS (Tailwind), and React. I use the browser's native localStorage to save the user's answers so that they can close their browser and return to the quiz at a later time without losing their work.
+**Tech used:** HTML, Tailwind CSS, and React. I use the browser's native localStorage to save the user's answers so that they can close their browser and return to the quiz at a later time without losing their work.
 
 ## Features
 
@@ -21,7 +21,7 @@ A scalable and fast framework for an online quiz. Users can navigate through the
 
 ## Lessons Learned
 
-This was a good refersher on using the features of react, including components, props, state, etc. 
+This was a good project to explore Tailwind CSS and a nice refersher on using the features of react, including components, props, state, etc. 
 
 ## To Run It Yourself
 
