@@ -121,7 +121,6 @@ export default function ScoreReportCard (props){
         )
         },
     ];
-
     
     return (
         <div className="flex justify-center">
