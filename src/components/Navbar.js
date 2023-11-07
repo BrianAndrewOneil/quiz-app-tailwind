@@ -7,7 +7,7 @@ export default function Navbar() {
         <nav className="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
                 <a href="#" className="flex items-center">
-                    <span className="hidden md:block"><FontAwesomeIcon icon={faPersonCircleQuestion} size="2xl pr-2" style={{color: "#0ea5e9",}} /> </span>
+                    <span className="hidden md:block pr-2"><FontAwesomeIcon icon={faPersonCircleQuestion} size="2xl" style={{color: "#0ea5e9",}} /> </span>
                     <span className="self-center text-lg md:text-2xl font-semibold whitespace-nowrap dark:text-white"> Quiz App Built with React & Tailwind</span>
                 </a>
                 <button data-collapse-toggle="navbar-hamburger" type="button" className="inline-flex items-center justify-center p-2 w-10 h-10 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-hamburger" aria-expanded="false">

@@ -13,7 +13,7 @@ const QuestionCard = ({
 }) => {
     return (
         <div className="flex justify-center">
-            <div className='w-full max-w-2xl p-4 bg-white border border-gray-200 rounded-md shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700'>
+            <div className='w-full max-w-3xl p-4 bg-white border border-gray-200 rounded-md shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700'>
                 <div className='flex items-center justify-between mb-4'>
                     <h5 className='text-2xl font-bold leading-none text-gray-900 dark:text-white'>
                     Question {question.id} of {quizLength}

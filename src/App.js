@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import questions from './questionsData';
 import Navbar from './components/Navbar';
 import QuestionCard from './components/QuestionCard';
-import ScoreReportCard from './components/ScoreReportCard';
+import ScoreReportCard from './components/ScoreReportCard2';
+import HelmetScript from './HelmetScript';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -74,13 +75,13 @@ export default function App() {
 
 	const domainScore = (targetDomain) => {
         let domainScore=0
-		const domainQuestions = questions.filter(question=>question.domain===targetDomain)
-		domainQuestions.forEach((q) => {
-			const storedAnswer = localStorage.getItem(`question_${q.id}`);
-			if (storedAnswer === q.correctResponse) {
-				domainScore += 1;
-			}
-		});
+        const domainQuestions = questions.filter(question=>question.domain===targetDomain)
+        domainQuestions.forEach((q) => {
+            const storedAnswer = localStorage.getItem(`question_${q.id}`);
+            if (storedAnswer === q.correctResponse) {
+                domainScore += 1;
+            }
+        });
         return Math.round(domainScore/domainQuestions.length*100)
     }
 
@@ -90,20 +91,20 @@ export default function App() {
 			<main className="p-3 mt-5 flex-grow items-center justify-center">
 				<div className="p-3">
 					{showScore? (
-						<ScoreReportCard
-							score={score}	
-							quizLength={questions.length}
-							questions={questions}
-							domainScore={domainScore}
-							handleRetakeQuiz={handleRetakeQuiz}
-							question={questions[currentQuestion]}
-							selectedAnswerID={selectedAnswerID}
-							handleAnswerOptionClick={handleAnswerOptionClick}
-							handleNextQuestion={handleNextQuestion}
-							handlePrevQuestion={handlePrevQuestion}
-							handleFirstQuestion={handleFirstQuestion}
-							handleLastQuestion={handleLastQuestion}
-						/>
+                        <ScoreReportCard
+                            score={score}	
+                            quizLength={questions.length}
+                            questions={questions}
+                            domainScore={domainScore}
+                            handleRetakeQuiz={handleRetakeQuiz}
+                            question={questions[currentQuestion]}
+                            selectedAnswerID={selectedAnswerID}
+                            handleAnswerOptionClick={handleAnswerOptionClick}
+                            handleNextQuestion={handleNextQuestion}
+                            handlePrevQuestion={handlePrevQuestion}
+                            handleFirstQuestion={handleFirstQuestion}
+                            handleLastQuestion={handleLastQuestion}
+                        />
 						) : (
 						<QuestionCard
 							quizLength={questions.length}
