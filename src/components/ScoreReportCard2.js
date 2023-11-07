@@ -27,7 +27,7 @@ export default function ScoreReportCard (props){
                     Results Report
                     </h1> */}
                     <h2 className='text-2xl font-bold leading-none text-gray-900 dark:text-white'>
-                        Your Score
+                        Total Score
                     </h2>
                     
                     <div className='px-16'>
@@ -50,7 +50,7 @@ export default function ScoreReportCard (props){
                     <h2 className='text-2xl font-bold leading-none text-gray-900 dark:text-white'>
                         Score by Domain
                     </h2>
-                    <div className='px-5 py-2' action=''>
+                    <div className='px-5'>
                         {domainList().map((domain) => {
                             const domainScore = props.domainScore(domain);
                             const progressWidth = `${domainScore}%`;
