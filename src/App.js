@@ -7,11 +7,11 @@ import ProgressCard from './components/ProgressCard';
 import Footer from './components/Footer';
 
 export default function App() {
-	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const [selectedAnswerID, setSelectedAnswerID] = useState(localStorage.getItem(`question_1`) || null);
-	const [showScore, setShowScore] = useState(false);
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [selectedAnswerID, setSelectedAnswerID] = useState(localStorage.getItem(`question_1`) || null);
+    const [showScore, setShowScore] = useState(false);
     const [showProgress, setShowProgress] = useState(false);
-	const [score, setScore] = useState(0);
+    const [score, setScore] = useState(0);
 
 	const handleAnswerOptionClick = (selectedAnswerID) => {
 		localStorage.setItem(`question_${questions[currentQuestion].id}`, selectedAnswerID);
@@ -46,14 +46,14 @@ export default function App() {
 	};
 
     const handleProgressToggle = () => {
-		setShowProgress(current => !current);
-	};
+        setShowProgress(current => !current);
+    };
 
     const handleLinkFromProgress = (questionIndex) => {
         setShowProgress(false);
         setCurrentQuestion(questionIndex);
         setSelectedAnswerID(localStorage.getItem(`question_${questions[questionIndex].id}`) || null);
-	};
+    };
 
 	const handleClearAnswers = () => {
 		// Wipe all localStorage completely,
@@ -73,10 +73,10 @@ export default function App() {
 	const handleScoreQuiz = () => {
 		let finalScore = 0;
 		questions.forEach((question) => {
-			const storedAnswer = localStorage.getItem(`question_${question.id}`);
-			if (storedAnswer === question.correctResponse) {
-				finalScore += 1;
-			}
+            const storedAnswer = localStorage.getItem(`question_${question.id}`);
+            if (storedAnswer === question.correctResponse) {
+                finalScore += 1;
+            }
 		});
 		setScore(finalScore);
 		setShowScore(true);
