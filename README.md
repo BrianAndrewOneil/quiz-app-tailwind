@@ -2,7 +2,7 @@
 
 A scalable and fast framework for an online quiz. Users can navigate through the quiz, answer the questions, and review and update their previous answers. The score report includes results for both the overall quiz and question-by-question. Users can clear their answers and retake the quiz as often as they'd like.
 
-**Link to project:** https://quiz-react-tailwind-oneil.netlify.app/
+**Link to project:** https://quiz-oneil.netlify.app/
 
 <img alt="image of web app" src="https://brianoneil.netlify.app/assets/img/portfolio/quiz-tailwind.png" width=50%>
 
