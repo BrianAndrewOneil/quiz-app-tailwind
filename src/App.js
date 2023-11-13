@@ -3,13 +3,14 @@ import questions from './questionsData';
 import Navbar from './components/Navbar';
 import QuestionCard from './components/QuestionCard';
 import ScoreReportCard from './components/ScoreReportCard2';
-import HelmetScript from './HelmetScript';
+import ProgressCard from './components/ProgressCard';
 import Footer from './components/Footer';
 
 export default function App() {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [selectedAnswerID, setSelectedAnswerID] = useState(localStorage.getItem(`question_1`) || null);
 	const [showScore, setShowScore] = useState(false);
+    const [showProgress, setShowProgress] = useState(false);
 	const [score, setScore] = useState(0);
 
 	const handleAnswerOptionClick = (selectedAnswerID) => {
@@ -42,6 +43,16 @@ export default function App() {
 		const lastOne = questions.length
 		setCurrentQuestion(lastOne-1);
 		setSelectedAnswerID(localStorage.getItem(`question_${lastOne}`) || null);
+	};
+
+    const handleProgressToggle = () => {
+		setShowProgress(current => !current);
+	};
+
+    const handleLinkFromProgress = (questionIndex) => {
+        setShowProgress(false);
+        setCurrentQuestion(questionIndex);
+        setSelectedAnswerID(localStorage.getItem(`question_${questions[questionIndex].id}`) || null);
 	};
 
 	const handleClearAnswers = () => {
@@ -86,40 +97,49 @@ export default function App() {
     }
 
 	return (
-		<div className="flex flex-col h-screen">
-			<Navbar />
-			<main className="p-3 mt-5 flex-grow items-center justify-center">
-				<div className="p-3">
-					{showScore? (
-                        <ScoreReportCard
-                            score={score}	
-                            quizLength={questions.length}
-                            questions={questions}
-                            domainScore={domainScore}
-                            handleRetakeQuiz={handleRetakeQuiz}
-                            question={questions[currentQuestion]}
-                            selectedAnswerID={selectedAnswerID}
-                            handleAnswerOptionClick={handleAnswerOptionClick}
-                            handleNextQuestion={handleNextQuestion}
-                            handlePrevQuestion={handlePrevQuestion}
-                            handleFirstQuestion={handleFirstQuestion}
-                            handleLastQuestion={handleLastQuestion}
-                        />
-						) : (
-						<QuestionCard
-							quizLength={questions.length}
-							question={questions[currentQuestion]}
-							selectedAnswerID={selectedAnswerID}
-							handleAnswerOptionClick={handleAnswerOptionClick}
-							handleNextQuestion={handleNextQuestion}
-							handlePrevQuestion={handlePrevQuestion}
-							handleScoreQuiz={handleScoreQuiz}
-							handleClearAnswers={handleClearAnswers}
-						/>
-					)}
-				</div>
-			</main>
+        <div className="flex flex-col h-screen">
+            <Navbar />
+            <main className="p-3 mt-5 flex-grow items-center justify-center">
+                <div className="p-3">
+                    {
+                    showProgress? (
+                    <ProgressCard
+                    questions={questions}
+                    handleProgressToggle={handleProgressToggle}
+                    handleLinkFromProgress={handleLinkFromProgress}
+                    />
+                    )
+                    :
+                    showScore? (
+                    <ScoreReportCard
+                    score={score}	
+                    quizLength={questions.length}
+                    questions={questions}
+                    domainScore={domainScore}
+                    handleRetakeQuiz={handleRetakeQuiz}
+                    question={questions[currentQuestion]}
+                    selectedAnswerID={selectedAnswerID}
+                    handleNextQuestion={handleNextQuestion}
+                    handlePrevQuestion={handlePrevQuestion}
+                    handleFirstQuestion={handleFirstQuestion}
+                    handleLastQuestion={handleLastQuestion}
+                    />
+                    ) : (
+                    <QuestionCard
+                    quizLength={questions.length}
+                    question={questions[currentQuestion]}
+                    selectedAnswerID={selectedAnswerID}
+                    handleAnswerOptionClick={handleAnswerOptionClick}
+                    handleNextQuestion={handleNextQuestion}
+                    handlePrevQuestion={handlePrevQuestion}
+                    handleScoreQuiz={handleScoreQuiz}
+                    handleClearAnswers={handleClearAnswers}
+                    handleProgressToggle={handleProgressToggle}
+                    />
+                    )}
+                </div>
+            </main>
             <Footer />
-		</div>
+        </div>
 	);
 }

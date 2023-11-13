@@ -1,5 +1,4 @@
 import React from 'react';
-import {Helmet} from "react-helmet";
 
 const QuestionCard = ({
     quizLength,
@@ -10,6 +9,7 @@ const QuestionCard = ({
     handlePrevQuestion,
     handleScoreQuiz,
     handleClearAnswers,
+    handleProgressToggle,
 }) => {
     return (
         <div className="flex justify-center">
@@ -18,6 +18,13 @@ const QuestionCard = ({
                     <h5 className='text-2xl font-bold leading-none text-gray-900 dark:text-white'>
                     Question {question.id} of {quizLength}
                     </h5>
+                    <button 
+                        type="button" 
+                        className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                        onClick={handleProgressToggle}
+                        >
+                        Progress
+                    </button>
                 </div>
                 <div className="flow-root">
                     <hr className="my-2 border-gray-200 sm:mx-auto dark:border-gray-300 lg:my-2" />

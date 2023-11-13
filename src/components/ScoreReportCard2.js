@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Helmet } from "react-helmet";
 import { CircularProgressbar, CircularProgressbarWithChildren, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
@@ -23,9 +22,6 @@ export default function ScoreReportCard (props){
         content: (
             <div className="tab-content p-3 flex flex-col sm:flex-row ">
                 <div className='w-12/12 sm:w-6/12 items-center justify-between mb-4 text-center space-y-4'>
-                    {/* <h1 className='text-4xl font-normal leading-none text-gray-900 dark:text-white'>
-                    Results Report
-                    </h1> */}
                     <h2 className='text-2xl font-bold leading-none text-gray-900 dark:text-white'>
                         Total Score
                     </h2>
@@ -57,7 +53,7 @@ export default function ScoreReportCard (props){
 
                             return (
                                 <div key={domain}>
-                                    <h3 className='text-xl py-2 font-thin leading-none text-gray-900 dark:text-white text-left pb-3 pl-1'>{domain}</h3>
+                                    <h3 className='text-xl py-4 font-thin leading-none text-gray-900 dark:text-white text-left pb-3 pl-1'>{domain}</h3>
                                     <div className="w-full bg-gray-200 rounded-md dark:bg-gray-700" role="progressbar" aria-label="progress bar" aria-valuenow="{domainScore}" aria-valuemin="0" aria-valuemax="100">
                                         <div className="bg-teal-700 text-sm font-semibold text-teal-100 text-center p-0.5 leading-none rounded-md" style={{ width: progressWidth }}>{progressWidth}</div>
                                     </div>
