@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import questions from './questionsData';
 import Navbar from './components/Navbar';
 import QuestionCard from './components/QuestionCard';
-import ScoreReportCard from './components/ScoreReportCard2';
+import ScoreReportCard from './components/ScoreReportCard';
 import ProgressCard from './components/ProgressCard';
 import Footer from './components/Footer';
 
@@ -13,37 +13,37 @@ export default function App() {
     const [showProgress, setShowProgress] = useState(false);
     const [score, setScore] = useState(0);
 
-	const handleAnswerOptionClick = (selectedAnswerID) => {
-		localStorage.setItem(`question_${questions[currentQuestion].id}`, selectedAnswerID);
-		setSelectedAnswerID(selectedAnswerID);
-	};
-  
-	const handleNextQuestion = () => {
-		const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
-			setCurrentQuestion(nextQuestion);
-			setSelectedAnswerID(localStorage.getItem(`question_${questions[nextQuestion].id}`) || null);
-		}
-	};
-  
-	const handlePrevQuestion = () => {
-		const prevQuestion = currentQuestion - 1;
-		if (prevQuestion >= 0) {
-			setCurrentQuestion(prevQuestion);
-			setSelectedAnswerID(localStorage.getItem(`question_${questions[prevQuestion].id}`) || null);
-		}
-	};
+    const handleAnswerOptionClick = (selectedAnswerID) => {
+        localStorage.setItem(`question_${questions[currentQuestion].id}`, selectedAnswerID);
+        setSelectedAnswerID(selectedAnswerID);
+    };
 
-	const handleFirstQuestion = () => {
-		setCurrentQuestion(0);
-		setSelectedAnswerID(localStorage.getItem(`question_1`) || null);
-	};
+    const handleNextQuestion = () => {
+        const nextQuestion = currentQuestion + 1;
+        if (nextQuestion < questions.length) {
+            setCurrentQuestion(nextQuestion);
+            setSelectedAnswerID(localStorage.getItem(`question_${questions[nextQuestion].id}`) || null);
+        }
+    };
 
-	const handleLastQuestion = () => {
-		const lastOne = questions.length
-		setCurrentQuestion(lastOne-1);
-		setSelectedAnswerID(localStorage.getItem(`question_${lastOne}`) || null);
-	};
+    const handlePrevQuestion = () => {
+        const prevQuestion = currentQuestion - 1;
+        if (prevQuestion >= 0) {
+            setCurrentQuestion(prevQuestion);
+            setSelectedAnswerID(localStorage.getItem(`question_${questions[prevQuestion].id}`) || null);
+        }
+    };
+
+    const handleFirstQuestion = () => {
+        setCurrentQuestion(0);
+        setSelectedAnswerID(localStorage.getItem(`question_1`) || null);
+    };
+
+    const handleLastQuestion = () => {
+        const lastOne = questions.length
+        setCurrentQuestion(lastOne-1);
+        setSelectedAnswerID(localStorage.getItem(`question_${lastOne}`) || null);
+    };
 
     const handleProgressToggle = () => {
         setShowProgress(current => !current);
@@ -55,43 +55,43 @@ export default function App() {
         setSelectedAnswerID(localStorage.getItem(`question_${questions[questionIndex].id}`) || null);
     };
 
-	const handleClearAnswers = () => {
-		// Wipe all localStorage completely,
-		localStorage.clear();
-		// and then reset the current question to the first and selected-answer state to null.
-		setSelectedAnswerID(null);
-		setCurrentQuestion(0);
-	};
+    const handleClearAnswers = () => {
+        // Wipe all localStorage completely,
+        localStorage.clear();
+        // and then reset the current question to the first and selected-answer state to null.
+        setSelectedAnswerID(null);
+        setCurrentQuestion(0);
+    };
 
-	const handleRetakeQuiz = () => {
-		localStorage.clear();
-		setSelectedAnswerID(null);
-		setShowScore(false);
-		setCurrentQuestion(0);
-	};
+    const handleRetakeQuiz = () => {
+        localStorage.clear();
+        setSelectedAnswerID(null);
+        setShowScore(false);
+        setCurrentQuestion(0);
+    };
 
-	const handleScoreQuiz = () => {
-		let finalScore = 0;
-		questions.forEach((question) => {
-            const storedAnswer = localStorage.getItem(`question_${question.id}`);
-            if (storedAnswer === question.correctResponse) {
-                finalScore += 1;
-            }
-		});
-		setScore(finalScore);
-		setShowScore(true);
-		setCurrentQuestion(0);
-		setSelectedAnswerID(localStorage.getItem(`question_1`) || null);
-	};
+    const handleScoreQuiz = () => {
+        let finalScore = 0;
+        questions.forEach((question) => {
+        const storedAnswer = localStorage.getItem(`question_${question.id}`);
+        if (storedAnswer === question.correctResponse) {
+            finalScore += 1;
+        }
+        });
+        setScore(finalScore);
+        setShowScore(true);
+        setCurrentQuestion(0);
+        setSelectedAnswerID(localStorage.getItem(`question_1`) || null);
+    };
 
-	const domainScore = (targetDomain) => {
+    const domainScore = (targetDomain) => {
         let domainScore=0
         const domainQuestions = questions.filter(question=>question.domain===targetDomain)
         domainQuestions.forEach((q) => {
             const storedAnswer = localStorage.getItem(`question_${q.id}`);
             if (storedAnswer === q.correctResponse) {
                 domainScore += 1;
-            }
+                }
         });
         return Math.round(domainScore/domainQuestions.length*100)
     }
