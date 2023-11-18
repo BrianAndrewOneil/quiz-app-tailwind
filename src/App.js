@@ -73,10 +73,10 @@ export default function App() {
     const handleScoreQuiz = () => {
         let finalScore = 0;
         questions.forEach((question) => {
-        const storedAnswer = localStorage.getItem(`question_${question.id}`);
-        if (storedAnswer === question.correctResponse) {
-            finalScore += 1;
-        }
+            const storedAnswer = localStorage.getItem(`question_${question.id}`);
+            if (storedAnswer === question.correctResponse) {
+                finalScore += 1;
+            }
         });
         setScore(finalScore);
         setShowScore(true);
