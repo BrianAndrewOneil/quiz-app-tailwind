@@ -105,6 +105,7 @@ export default function ScoreReportCard (props){
                         onClick={props.handleNextQuestion}
                         type='button'
                         className='mr-4 text-white bg-sky-700 hover:bg-sky-800 rounded-md px-3 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
+                        disabled={localStorage.length === 0}
                         >
                         Next
                         </button>
