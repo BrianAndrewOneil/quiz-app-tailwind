@@ -91,6 +91,7 @@ export default function ScoreReportCard (props){
                         onClick={props.handleFirstQuestion}
                         type='button'
                         className='mr-4 text-white bg-sky-700 hover:bg-sky-800 rounded-md px-3 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
+                        disabled={props.question.id===1}
                         >
                         First
                         </button>
@@ -98,6 +99,7 @@ export default function ScoreReportCard (props){
                         onClick={props.handlePrevQuestion}
                         type='button'
                         className='mr-4 text-white bg-sky-700 hover:bg-sky-800 rounded-md px-3 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
+                        disabled={props.question.id===1}
                         >
                         Prev
                         </button>
@@ -105,6 +107,7 @@ export default function ScoreReportCard (props){
                         onClick={props.handleNextQuestion}
                         type='button'
                         className='mr-4 text-white bg-sky-700 hover:bg-sky-800 rounded-md px-3 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
+                        disabled={props.question.id===props.quizLength?true:false}
                         >
                         Next
                         </button>
@@ -112,6 +115,7 @@ export default function ScoreReportCard (props){
                         onClick={props.handleLastQuestion}
                         type='button'
                         className='text-white bg-sky-700 hover:bg-sky-800 rounded-md px-3 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
+                        disabled={props.question.id===props.quizLength?true:false}
                         >
                         Last
                         </button>
