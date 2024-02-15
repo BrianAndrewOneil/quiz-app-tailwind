@@ -49,6 +49,7 @@ const QuestionCard = ({
                             onClick={handlePrevQuestion}
                             type='button'
                             className='text-white bg-sky-700 hover:bg-sky-800 font-medium rounded-md text-sm px-5 py-2.5 mr-6 mb-2 dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
+                            disabled={question.id===1}
                             >
                             Prev
                             </button>
