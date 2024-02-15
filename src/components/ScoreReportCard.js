@@ -141,6 +141,7 @@ export default function ScoreReportCard (props){
                         onClick={props.handleLastQuestion}
                         type='button'
                         className='text-white bg-sky-700 hover:bg-sky-800 rounded-md px-3 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
+                        disabled={props.question.id===props.quizLength?true:false}
                         >
                         Last
                         </button>
