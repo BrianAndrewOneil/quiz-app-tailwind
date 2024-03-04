@@ -48,14 +48,14 @@ const QuestionCard = ({
                             <button
                             onClick={handlePrevQuestion}
                             type='button'
-                            className='text-white bg-sky-700 hover:bg-sky-800 font-medium rounded-md text-sm px-5 py-2.5 mr-6 mb-2 dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
+                            className='text-white bg-sky-700 hover:bg-sky-800 font-medium rounded-full text-sm px-5 py-2.5 mr-6 mb-2 dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
                             >
                             Prev
                             </button>
                             <button
                             onClick={handleNextQuestion}
                             type='button'
-                            className='text-white bg-sky-700 hover:bg-sky-800 font-medium rounded-md text-sm px-5 py-2.5 mb-2 dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
+                            className='text-white bg-sky-700 hover:bg-sky-800 font-medium rounded-full text-sm px-5 py-2.5 mb-2 dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
                             >
                             Next
                             </button>
@@ -65,10 +65,10 @@ const QuestionCard = ({
                 </div>
 
                 <div className='flex justify-center pt-4'>
-                    <button onClick={handleScoreQuiz} type='button' className='text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-teal-300 font-medium rounded-md text-sm px-7 py-2.5 mr-6 mb-2 dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800'>
+                    <button onClick={handleScoreQuiz} type='button' className='text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-teal-300 font-medium rounded-full text-sm px-7 py-2.5 mr-6 mb-2 dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800'>
                     Score My Quiz
                     </button>
-                    <button onClick={handleClearAnswers} type='button' className='text-white bg-gradient-to-r from-red-600 via-red-700 to-red-800 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 font-medium rounded-md text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900'>
+                    <button onClick={handleClearAnswers} type='button' className='text-white bg-gradient-to-r from-red-600 via-red-700 to-red-800 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900'>
                     Clear My Answers
                     </button>
                 </div>

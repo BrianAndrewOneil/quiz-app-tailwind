@@ -54,8 +54,8 @@ export default function ScoreReportCard (props){
                             return (
                                 <div key={domain}>
                                     <h3 className='text-lg pt-4 pb-3 font-thin leading-none text-gray-900 dark:text-white text-left pl-1'>{domain}</h3>
-                                    <div className="w-full bg-gray-200 rounded-md dark:bg-gray-700" role="progressbar" aria-label="progress bar" aria-valuenow="{domainScore}" aria-valuemin="0" aria-valuemax="100">
-                                        <div className="bg-teal-700 text-sm font-semibold text-teal-100 text-center p-0.5 leading-none rounded-md" style={{ width: progressWidth }}>{progressWidth}</div>
+                                    <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700" role="progressbar" aria-label="progress bar" aria-valuenow="{domainScore}" aria-valuemin="0" aria-valuemax="100">
+                                        <div className="bg-teal-700 text-sm font-semibold text-teal-100 text-center p-0.5 leading-none rounded-full" style={{ width: progressWidth }}>{progressWidth}</div>
                                     </div>
                                 </div>
                             );
@@ -83,14 +83,14 @@ export default function ScoreReportCard (props){
                             className={
                                 //answer was selected and is not correct
                                 props.selectedAnswerID === answerOption.answerID && answerOption.answerID !== props.question.correctResponse ? 
-                                'w-full text-left font-semibold text-gray-900 bg-white border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-md text-base px-5 py-2.5 mr-2 mb-2 dark:bg-red-600/50 dark:text-white dark:border-red-800/50 dark:focus:ring-red-600/50'
+                                'w-full text-left font-semibold text-gray-900 bg-white border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-full text-base px-5 py-2.5 mr-2 mb-2 dark:bg-red-600/50 dark:text-white dark:border-red-800/50 dark:focus:ring-red-600/50'
                                 : 
                                 //answer was selected and is correct
                                 props.selectedAnswerID === answerOption.answerID && answerOption.answerID === props.question.correctResponse ?
-                                'w-full text-left font-semibold text-gray-900 bg-white border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-md text-base px-5 py-2.5 mr-2 mb-2 dark:bg-teal-600 dark:text-white dark:border-teal-600 dark:focus:ring-teal-500'
+                                'w-full text-left font-semibold text-gray-900 bg-white border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-full text-base px-5 py-2.5 mr-2 mb-2 dark:bg-teal-600 dark:text-white dark:border-teal-600 dark:focus:ring-teal-500'
                                 :
                                 //everything else
-                                'w-full text-left font-thin text-gray-900 border border-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-md text-base px-5 py-2.5 mr-2 mb-2 dark:border-gray-600 dark:text-gray-100 dark:focus:ring-gray-800'
+                                'w-full text-left font-thin text-gray-900 border border-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base px-5 py-2.5 mr-2 mb-2 dark:border-gray-600 dark:text-gray-100 dark:focus:ring-gray-800'
                             }
                             >
                             {answerOption.answerText}
@@ -116,28 +116,28 @@ export default function ScoreReportCard (props){
                         <button
                         onClick={props.handleFirstQuestion}
                         type='button'
-                        className='mr-4 text-white bg-sky-700 hover:bg-sky-800 rounded-md px-3 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
+                        className='mr-4 text-white bg-sky-700 hover:bg-sky-800 rounded-full px-5 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
                         >
                         First
                         </button>
                         <button
                         onClick={props.handlePrevQuestion}
                         type='button'
-                        className='mr-4 text-white bg-sky-700 hover:bg-sky-800 rounded-md px-3 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
+                        className='mr-4 text-white bg-sky-700 hover:bg-sky-800 rounded-full px-5 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
                         >
                         Prev
                         </button>
                         <button
                         onClick={props.handleNextQuestion}
                         type='button'
-                        className='mr-4 text-white bg-sky-700 hover:bg-sky-800 rounded-md px-3 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
+                        className='mr-4 text-white bg-sky-700 hover:bg-sky-800 rounded-full px-5 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
                         >
                         Next
                         </button>
                         <button
                         onClick={props.handleLastQuestion}
                         type='button'
-                        className='text-white bg-sky-700 hover:bg-sky-800 rounded-md px-3 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
+                        className='text-white bg-sky-700 hover:bg-sky-800 rounded-full px-5 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
                         >
                         Last
                         </button>
@@ -185,7 +185,7 @@ export default function ScoreReportCard (props){
 
                             <hr className="mb-2 mt-3 border-gray-200 sm:mx-auto dark:border-gray-700 lg:mb-2" />
                             <div className='flex justify-center p-4'>
-                                <button onClick={props.handleRetakeQuiz} type='button' className='text-white bg-gradient-to-r from-red-600 via-red-700 to-red-800 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 font-medium rounded-md text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900'>
+                                <button onClick={props.handleRetakeQuiz} type='button' className='text-white bg-gradient-to-r from-red-600 via-red-700 to-red-800 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900'>
                                     Retake This Quiz
                                 </button>
                             </div>
