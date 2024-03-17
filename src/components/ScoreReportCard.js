@@ -4,15 +4,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CircularProgressbar, CircularProgressbarWithChildren, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-export default function ScoreReportCard (props){
+export default function ScoreReportCard ({
+    score,
+    quizLength,
+    questions,
+    getDomainScore,
+    handleRetakeQuiz,
+    question,
+    selectedAnswerID,
+    handleNextQuestion,
+    handlePrevQuestion,
+    handleFirstQuestion,
+    handleLastQuestion
+    }){
 
     const domainList = () => {
         const domainNumbers = new Set();
-        props.questions.forEach((question) => domainNumbers.add(question.domain));
+        questions.forEach((question) => domainNumbers.add(question.domain));
         return Array.from(domainNumbers);
     };
 
-    const scorePercentage = Math.round(props.score/props.quizLength*100)
+    const scorePercentage = Math.round(score/quizLength*100)
 
     const [currentTab, setCurrentTab] = useState('tab1');
     const tabList = [
@@ -37,7 +49,7 @@ export default function ScoreReportCard (props){
                             })}
                         />
                         <h3 className='text-xl leading-none text-gray-900 dark:text-white py-3'>
-                            {props.score} of {props.quizLength} Correct
+                            {score} of {quizLength} Correct
                         </h3>
                     </div>
                     
@@ -48,7 +60,7 @@ export default function ScoreReportCard (props){
                     </h2>
                     <div className='px-5'>
                         {domainList().map((domain) => {
-                            const domainScore = props.domainScore(domain);
+                            const domainScore = getDomainScore(domain);
                             const progressWidth = `${domainScore}%`;
 
                             return (
@@ -71,22 +83,22 @@ export default function ScoreReportCard (props){
         content: (
             <div className="tab-content pt-3">
                 <h2 className='text-xl font-bold leading-none text-gray-900 dark:text-white pl-3'>
-                    Question {props.question.id} of {props.quizLength}
+                    Question {question.id} of {quizLength}
                 </h2>
                 <div className='px-5' action=''>
-                    <p className="my-6 font-thin text-gray-100 text-lg dark:text-gray-100">{props.question.questionText}</p>
-                    {props.question.answerOptions.map((answerOption) => (
+                    <p className="my-6 font-thin text-gray-100 text-lg dark:text-gray-100">{question.questionText}</p>
+                    {question.answerOptions.map((answerOption) => (
                         <button 
                             disabled={true} 
                             key={answerOption.answerID}
                             
                             className={
                                 //answer was selected and is not correct
-                                props.selectedAnswerID === answerOption.answerID && answerOption.answerID !== props.question.correctResponse ? 
+                                selectedAnswerID === answerOption.answerID && answerOption.answerID !== question.correctResponse ? 
                                 'w-full text-left font-semibold text-gray-900 bg-white border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-full text-base px-5 py-2.5 mr-2 mb-2 dark:bg-red-600/50 dark:text-white dark:border-red-800/50 dark:focus:ring-red-600/50'
                                 : 
                                 //answer was selected and is correct
-                                props.selectedAnswerID === answerOption.answerID && answerOption.answerID === props.question.correctResponse ?
+                                selectedAnswerID === answerOption.answerID && answerOption.answerID === question.correctResponse ?
                                 'w-full text-left font-semibold text-gray-900 bg-white border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-full text-base px-5 py-2.5 mr-2 mb-2 dark:bg-teal-600 dark:text-white dark:border-teal-600 dark:focus:ring-teal-500'
                                 :
                                 //everything else
@@ -98,44 +110,44 @@ export default function ScoreReportCard (props){
                     ))}
 
 
-                    {props.selectedAnswerID === props.question.correctResponse ? 
+                    {selectedAnswerID === question.correctResponse ? 
                     <p className="my-3 text-gray-100 text-base dark:text-teal-500"> <FontAwesomeIcon icon={faCheck} style={{color: "#009688",}} /> You answered this question correctly.</p>
                     : 
-                    props.selectedAnswerID !== props.question.correctResponse && props.selectedAnswerID !== null ?
+                    selectedAnswerID !== question.correctResponse && selectedAnswerID !== null ?
                     <p className="my-3 text-gray-100 text-base dark:text-red-600"> <FontAwesomeIcon icon={faXmark} style={{color: "#DC3545",}} /> You answered this question incorrectly.</p>
                     : 
                     <p className="my-3 text-gray-100 text-base dark:text-red-600"> <FontAwesomeIcon icon={faXmark} style={{color: "#DC3545",}} /> You did not answer this question.</p>
                     }
                     
                     <p className='font-bold text-gray-100 text-base dark:text-gray-300 leading-tight'>Explanation<br/>
-                    <span className='font-thin'>{props.question.questionRationale}</span></p>
+                    <span className='font-thin'>{question.questionRationale}</span></p>
 
                     <hr className="mb-2 mt-5 border-gray-200 sm:mx-auto dark:border-gray-700 lg:mb-2" />
 
                     <div className='flex justify-center p-4'>
                         <button
-                        onClick={props.handleFirstQuestion}
+                        onClick={handleFirstQuestion}
                         type='button'
                         className='mr-4 text-white bg-sky-700 hover:bg-sky-800 rounded-full px-5 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
                         >
                         First
                         </button>
                         <button
-                        onClick={props.handlePrevQuestion}
+                        onClick={handlePrevQuestion}
                         type='button'
                         className='mr-4 text-white bg-sky-700 hover:bg-sky-800 rounded-full px-5 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
                         >
                         Prev
                         </button>
                         <button
-                        onClick={props.handleNextQuestion}
+                        onClick={handleNextQuestion}
                         type='button'
                         className='mr-4 text-white bg-sky-700 hover:bg-sky-800 rounded-full px-5 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
                         >
                         Next
                         </button>
                         <button
-                        onClick={props.handleLastQuestion}
+                        onClick={handleLastQuestion}
                         type='button'
                         className='text-white bg-sky-700 hover:bg-sky-800 rounded-full px-5 py-2 text-sm font-medium dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none'
                         >
@@ -185,7 +197,7 @@ export default function ScoreReportCard (props){
 
                             <hr className="mb-2 mt-3 border-gray-200 sm:mx-auto dark:border-gray-700 lg:mb-2" />
                             <div className='flex justify-center p-4'>
-                                <button onClick={props.handleRetakeQuiz} type='button' className='text-white bg-gradient-to-r from-red-600 via-red-700 to-red-800 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900'>
+                                <button onClick={handleRetakeQuiz} type='button' className='text-white bg-gradient-to-r from-red-600 via-red-700 to-red-800 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900'>
                                     Retake This Quiz
                                 </button>
                             </div>

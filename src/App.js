@@ -84,7 +84,7 @@ export default function App() {
         setSelectedAnswerID(localStorage.getItem(`question_1`) || null);
     };
 
-    const domainScore = (targetDomain) => {
+    const getDomainScore = (targetDomain) => {
         let domainScore=0
         const domainQuestions = questions.filter(question=>question.domain===targetDomain)
         domainQuestions.forEach((q) => {
@@ -115,7 +115,7 @@ export default function App() {
                     score={score}	
                     quizLength={questions.length}
                     questions={questions}
-                    domainScore={domainScore}
+                    getDomainScore={getDomainScore}
                     handleRetakeQuiz={handleRetakeQuiz}
                     question={questions[currentQuestion]}
                     selectedAnswerID={selectedAnswerID}
