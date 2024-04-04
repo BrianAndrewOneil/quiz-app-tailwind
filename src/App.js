@@ -84,19 +84,7 @@ export default function App() {
         setSelectedAnswerID(localStorage.getItem(`question_1`) || null);
     };
 
-    const getDomainScore = (targetDomain) => {
-        let domainScore=0
-        const domainQuestions = questions.filter(question=>question.domain===targetDomain)
-        domainQuestions.forEach((q) => {
-            const storedAnswer = localStorage.getItem(`question_${q.id}`);
-            if (storedAnswer === q.correctResponse) {
-                domainScore += 1;
-                }
-        });
-        return Math.round(domainScore/domainQuestions.length*100)
-    }
-
-	return (
+    return (
         <div className="flex flex-col h-screen">
             <Navbar />
             <main className="p-3 mt-5 flex-grow items-center justify-center">
@@ -115,7 +103,6 @@ export default function App() {
                     score={score}	
                     quizLength={questions.length}
                     questions={questions}
-                    getDomainScore={getDomainScore}
                     handleRetakeQuiz={handleRetakeQuiz}
                     question={questions[currentQuestion]}
                     selectedAnswerID={selectedAnswerID}

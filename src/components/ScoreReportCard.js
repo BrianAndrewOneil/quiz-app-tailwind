@@ -8,7 +8,6 @@ export default function ScoreReportCard ({
     score,
     quizLength,
     questions,
-    getDomainScore,
     handleRetakeQuiz,
     question,
     selectedAnswerID,
@@ -23,6 +22,18 @@ export default function ScoreReportCard ({
         questions.forEach((question) => domainNumbers.add(question.domain));
         return Array.from(domainNumbers);
     };
+
+    const getDomainScore = (targetDomain) => {
+        let domainScore=0
+        const domainQuestions = questions.filter(question=>question.domain===targetDomain)
+        domainQuestions.forEach((q) => {
+            const storedAnswer = localStorage.getItem(`question_${q.id}`);
+            if (storedAnswer === q.correctResponse) {
+                domainScore += 1;
+            }
+        });
+        return Math.round(domainScore/domainQuestions.length*100)
+    }
 
     const scorePercentage = Math.round(score/quizLength*100)
 
@@ -104,7 +115,7 @@ export default function ScoreReportCard ({
                                 //everything else
                                 'w-full text-left font-thin text-gray-900 border border-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base px-5 py-2.5 mr-2 mb-2 dark:border-gray-600 dark:text-gray-100 dark:focus:ring-gray-800'
                             }
-                            >
+                        >
                             {answerOption.answerText}
                         </button>
                     ))}
