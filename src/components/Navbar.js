@@ -18,9 +18,9 @@ export default function Navbar() {
                 </button>
                 <div className="hidden w-full" id="navbar-hamburger">
                     <ul className="flex flex-col text-sm sm:text-lg font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-                        <li>
+                        {/* <li>
                         <a href="https://brianoneil.netlify.app/" target="_blank" className="text-right block mr-1 py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"><FontAwesomeIcon icon={faHand} style={{color: "#0ea5e9",}} shake /> About me</a>
-                        </li>
+                        </li> */}
                         <li>
                         <a href="https://react.dev/" target="_blank" className="text-right block mr-1 py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">About react</a>
                         </li>
